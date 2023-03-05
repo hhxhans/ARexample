@@ -10,6 +10,7 @@ import SwiftUI
 struct scrollview: View {
     let picname:[String]
     let vertical:Int
+    let backgroundcolor:Color
     var body: some View {
         ScrollView(.vertical, showsIndicators: true, content: {
             LazyVStack {
@@ -23,7 +24,7 @@ struct scrollview: View {
                             .scaledToFit()
                         .frame(width:200, height: 100)
                     })
-                    }}
+                }}.padding(10).background(backgroundcolor)
                 })
                     
                            }}

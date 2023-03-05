@@ -7,12 +7,10 @@
 
 import SwiftUI
 import RealityKit
-import ARKit
 
 struct ContentView : View {
-    let picnames:[String]=["biplane_2x","gramophone_2x"]
     var body: some View {
-        scrollview(picname: picnames, vertical: 10,backgroundcolor: Color.blue.opacity(0.3))
+        return ARViewContainer().edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -22,7 +20,11 @@ struct ARViewContainer: UIViewRepresentable {
         
         let arView = ARView(frame: .zero)
         
+        // Load the "Box" scene from the "Experience" Reality File
+        let boxAnchor = try! Experience.loadBox()
         
+        // Add the box anchor to the scene
+        arView.scene.anchors.append(boxAnchor)
         
         return arView
         
